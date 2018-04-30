@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.common.exception.BusinessException;
 import org.terasoluna.gfw.common.exception.ResourceNotFoundException;
@@ -15,6 +16,8 @@ import org.terasoluna.gfw.common.message.ResultMessages;
 import todo.domain.model.Todo;
 import todo.domain.repository.todo.TodoRepository;
 
+@Service
+@Transactional
 public class TodoServiceImpl implements TodoService {
 
 	private static final long MAX_UNFINISHED_COUNT = 5;
