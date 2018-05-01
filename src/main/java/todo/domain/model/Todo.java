@@ -6,13 +6,13 @@ import java.util.Date;
 public class Todo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String todoId;
-	
+
 	private String todoTitle;
-	
+
 	private boolean finished;
-	
+
 	private Date createAt;
 
 	public String getTodoId() {
@@ -46,8 +46,4 @@ public class Todo implements Serializable {
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
-	
-	
-	
-
 }
