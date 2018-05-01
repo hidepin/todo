@@ -4,8 +4,11 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.springframework.stereotype.Repository;
+
 import todo.domain.model.Todo;
 
+@Repository
 public class TodoRepositoryImpl implements TodoRepository {
 
 	private static final Map<String, Todo> TODO_MAP = new ConcurrentHashMap<String, Todo>();
