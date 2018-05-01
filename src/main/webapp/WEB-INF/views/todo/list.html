@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Todo List</title>
+<style type="text/css">
+.strike {
+    text-decoration: line-through;
+}
+</style>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <div id="todoForm">
+        <form action="./list.html" th:action="@{todo/create}"
+        	th:object="${todoForm}" method="POST">
+            <input type="text" name="todoTitle" th:field="*{todoTitle}"/>
+            <button type="submit">Create Todo</button>
+        </form>
+    </div>
+    <hr />
+    <div id="todoList">
+       	<ul th:each="todo : ${todos}">
+       		<li th:if="${todo.finished}">
+       			<span class="strike">
+                	${todo.todoTitle}
+                </span>
+       		</li>
+       		<li th:if="${not todo.finished}">
+               	${todo.todoTitle}
+       		</li>
+       	</ul>
+    </div>
+</body>
+</html>
