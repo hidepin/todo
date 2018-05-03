@@ -49,20 +49,25 @@
     </div>
     <hr />
     <div id="todoList">
-       	<ul th:each="todo : ${todos}">
-       		<li th:if="${todo.finished}">
-       			<span th:text=${todo.todoTitle} class="strike">
-                	finished
+       	<ul th:each="todo : ${todos}" th:switch="${todo.finished}">
+       		<li>
+				<span th:text=${todo.todoTitle} class="strike" th:case="true">
+        	   		finished
                 </span>
-       		</li>
-       		<li th:if="${not todo.finished}">
-       			<span th:text=${todo.todoTitle}>
-                	not finished
-                </span>
-        		<form action="./list.html" th:action="@{/todo/finish}"
+                <span th:case="*">
+	   				<span th:text=${todo.todoTitle}>
+   						not finished
+   	    	        </span>
+					<form action="./list.html" th:action="@{/todo/finish}"
+        				th:object="${todoForm}" method="POST" style="display: inline-block;">
+            			<input type="hidden" name="todoId" value="todoId" th:value="${todo.todoId}"/>
+            			<button type="submit">Finish</button>
+        			</form>
+   	            </span>
+        		<form action="./list.html" th:action="@{/todo/delete}"
         			th:object="${todoForm}" method="POST" style="display: inline-block;">
             		<input type="hidden" name="todoId" value="todoId" th:value="${todo.todoId}"/>
-            		<button type="submit">Finish</button>
+            		<button type="submit">Delete</button>
         		</form>
        		</li>
        	</ul>
