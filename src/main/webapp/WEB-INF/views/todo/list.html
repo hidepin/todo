@@ -12,6 +12,14 @@
 <body>
     <h1>Todo List</h1>
     <div id="todoForm">
+    
+	    <div th:if="${resultMessages} != null" class="alert"
+    	    th:classappend="|alert-${resultMessages.type}|"> <!-- (2) -->
+	        <ul>
+            	<li th:each="message : ${resultMessages}"
+                	 th:text="${message.code} != null ? ${#messages.msgWithParams(message.code, message.args)} : ${message.text}"></li> <!-- (3) -->
+        	</ul>
+    	</div>
         <form action="./list.html" th:action="@{/todo/create}"
         	th:object="${todoForm}" method="POST">
             <input type="text" name="todoTitle" th:field="*{todoTitle}"/>
