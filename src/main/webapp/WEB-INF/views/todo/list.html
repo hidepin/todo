@@ -7,6 +7,26 @@
 .strike {
     text-decoration: line-through;
 }
+
+.alert {
+    border: 1px solid;
+}
+
+.alert-error {
+    background-color: #c60f13;
+    border-color: #970b0e;
+    color: white;
+}
+
+.alert-success {
+    background-color: #5da423;
+    border-color: #457a1a;
+    color: white;
+}
+
+.text-error {
+    color: #c60f13;
+}
 </style>
 </head>
 <body>
@@ -14,16 +34,16 @@
     <div id="todoForm">
     
 	    <div th:if="${resultMessages} != null" class="alert"
-    	    th:classappend="|alert-${resultMessages.type}|"> <!-- (2) -->
+    	    th:classappend="|alert-${resultMessages.type}|">
 	        <ul>
             	<li th:each="message : ${resultMessages}"
-                	 th:text="${message.code} != null ? ${#messages.msgWithParams(message.code, message.args)} : ${message.text}"></li> <!-- (3) -->
+                	 th:text="${message.code} != null ? ${#messages.msgWithParams(message.code, message.args)} : ${message.text}"></li>
         	</ul>
     	</div>
         <form action="./list.html" th:action="@{/todo/create}"
         	th:object="${todoForm}" method="POST">
             <input type="text" name="todoTitle" th:field="*{todoTitle}"/>
-            <span th:errors="*{todoTitle}">error message</span>
+            <span th:errors="*{todoTitle}" class="text-error">error message</span>
             <button type="submit">Create Todo</button>
         </form>
     </div>
