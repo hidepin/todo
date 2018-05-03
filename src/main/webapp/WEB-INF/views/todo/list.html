@@ -12,7 +12,7 @@
 <body>
     <h1>Todo List</h1>
     <div id="todoForm">
-        <form action="./list.html" th:action="@{todo/create}"
+        <form action="./list.html" th:action="@{/todo/create}"
         	th:object="${todoForm}" method="POST">
             <input type="text" name="todoTitle" th:field="*{todoTitle}"/>
             <button type="submit">Create Todo</button>
