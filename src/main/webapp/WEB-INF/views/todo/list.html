@@ -59,6 +59,11 @@
        			<span th:text=${todo.todoTitle}>
                 	not finished
                 </span>
+        		<form action="./list.html" th:action="@{/todo/finish}"
+        			th:object="${todoForm}" method="POST" style="display: inline-block;">
+            		<input type="hidden" name="todoId" value="todoId" th:value="${todo.todoId}"/>
+            		<button type="submit">Finish</button>
+        		</form>
        		</li>
        	</ul>
     </div>
