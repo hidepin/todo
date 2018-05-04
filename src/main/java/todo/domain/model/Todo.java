@@ -46,12 +46,4 @@ public class Todo implements Serializable {
 	public void setFinished(boolean finished) {
 		this.finished = finished;
 	}
-
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
 }
