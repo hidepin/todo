@@ -13,7 +13,15 @@ public class Todo implements Serializable {
 
 	private boolean finished;
 
-	private Date createAt;
+	private Date createdAt;
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 
 	public String getTodoId() {
 		return todoId;
