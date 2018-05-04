@@ -52,10 +52,10 @@ public class TodoServiceImpl implements TodoService {
 			throw new BusinessException(messages);
 		}
 		String todoId = UUID.randomUUID().toString();
-		Date createAt = new Date();
+		Date createdAt = new Date();
 		
 		todo.setTodoId(todoId);
-		todo.setCreateAt(createAt);
+		todo.setCreatedAt(createdAt);
 		todo.setFinished(false);
 		
 		todoRepository.create(todo);
