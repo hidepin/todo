@@ -53,4 +53,13 @@ public class TodoRestController {
         TodoResource todoResource = beanMapper.map(todo, TodoResource.class);
         return todoResource;
     }
+    
+    @RequestMapping(value="{todoId}", method = RequestMethod.PUT) // (1)
+    @ResponseStatus(HttpStatus.OK)
+    public TodoResource putTodo(@PathVariable("todoId") String todoId) { // (2)
+        Todo finishedTodo = todoService.finish(todoId); // (3)
+        TodoResource finishedTodoResource = beanMapper.map(finishedTodo, TodoResource.class);
+        return finishedTodoResource;
+    }
+
 }
