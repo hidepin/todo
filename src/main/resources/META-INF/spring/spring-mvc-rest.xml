@@ -22,9 +22,24 @@
             <bean
                 class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver" />
         </mvc:argument-resolvers>
+        <mvc:message-converters register-defaults="false">
+            <bean
+                class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                        <property name="dateFormat">
+                            <!-- (3) -->
+                            <bean class="com.fasterxml.jackson.databind.util.StdDateFormat"/>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
     </mvc:annotation-driven>
 
     <mvc:default-servlet-handler />
+    
+    <context:component-scan base-package="todo.api" /> <!-- (4) -->
 
     <context:component-scan base-package="todo.app" />
 
