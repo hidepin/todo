@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.terasoluna.gfw.common.exception.BusinessException;
+import org.terasoluna.gfw.common.exception.ResourceNotFoundException;
 import org.terasoluna.gfw.common.exception.ResultMessagesNotificationException;
 import org.terasoluna.gfw.common.message.ResultMessage;
 
@@ -78,4 +79,12 @@ public class RestGlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .getArgs());
         return handleExceptionInternal(ex, apiError, headers, status, request);
     }
+    
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<Object> handleResourceNotFoundException(
+            ResourceNotFoundException ex, WebRequest request) {
+        return handleResultMessagesNotificationException(ex, new HttpHeaders(),
+                HttpStatus.NOT_FOUND, request);
+    }
+
 }
