@@ -86,5 +86,13 @@ public class RestGlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return handleResultMessagesNotificationException(ex, new HttpHeaders(),
                 HttpStatus.NOT_FOUND, request);
     }
+    
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> handleSystemError(Exception ex,
+            WebRequest request) {
+        ApiError apiError = createApiError(request, "E500");
+        return handleExceptionInternal(ex, apiError, new HttpHeaders(),
+                HttpStatus.INTERNAL_SERVER_ERROR, request);
+    }
 
 }
