@@ -106,7 +106,7 @@
                     <version>0.8.2</version>
                     <executions>
                         <execution>
-                            <id>default-prepare-agent</id>
+                            <id>default</id>
                             <goals>
                                 <goal>prepare-agent</goal>
                             </goals>
@@ -115,6 +115,13 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.2</version>
+            </plugin>
+        </plugins>
     </build>
 
     <dependencies>
