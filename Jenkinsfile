@@ -24,7 +24,7 @@ pipeline {
         }
         stage('JUnitテスト結果の集計') {
             steps {
-                junit allowEmptyResults: true, testResults: '**/target/surefire-reports /*.xml'
+                junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
             }
         }
         stage('カバレッジ') {
