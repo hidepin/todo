@@ -22,11 +22,11 @@ pipeline {
                 archiveArtifacts artifacts: '*/*.war', fingerprint: true, onlyIfSuccessful: true
             }
         }
-//        stage('JUnitテスト結果の集計') {
-//            steps {
-//                junit 'target/surefire-reports/*.xml'
-//            }
-//        }
+        stage('JUnitテスト結果の集計') {
+            steps {
+                junit allowEmptyResults: true, testResults: '**/target/surefire-reports /*.xml'
+            }
+        }
         stage('カバレッジ') {
             steps {
                 jacoco()
