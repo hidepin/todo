@@ -1,0 +1,6 @@
+<dataset>
+  <persons id="1" first_name="Barack" last_name="Obama" age="58" gender_id="1"/>
+  <persons id="2" first_name="Theresa" last_name="May" age="43" gender_id="2"/>
+  <persons id="3" first_name="Vladimir" last_name="Putin" age="52" gender_id="1"/>
+  <persons id="4" first_name="Matsuko" last_name="Deluxe" age="45" gender_id="1"/>
+</dataset>
